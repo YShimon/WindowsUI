@@ -1,19 +1,36 @@
-﻿using Prism.Mvvm;
+﻿using System;
+using Prism.Mvvm;
+using Prism.Regions;
+using Prism.Services.Dialogs;
+using PrismCore.Views;
+using Reactive.Bindings;
 
 namespace PrismCore.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        private string _title = "Prism Application";
-        public string Title
+        private readonly IRegionManager regionManager;
+        private readonly IDialogService dialogService;
+
+        /// <summary>
+        /// タイトル
+        /// </summary>
+        public ReactiveProperty<string> Title { get; } 
+            = new ReactiveProperty<string> { Value = "UI Sample Based On .Net Core with Prism" };
+
+        public ReactiveCommand ShowAcordionView { get; } = new ReactiveCommand();
+
+        public MainWindowViewModel(IRegionManager region, IDialogService dialog)
         {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
+            regionManager = region;
+            dialogService = dialog;
+
+            ShowAcordionView.Subscribe(ExecuteShowAcordionView);
         }
 
-        public MainWindowViewModel()
+        private void ExecuteShowAcordionView()
         {
-
+            dialogService.ShowDialog(nameof(Accordion), null, null);
         }
     }
 }

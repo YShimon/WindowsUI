@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using Prism.Ioc;
+using PrismCore.ViewModels;
 using PrismCore.Views;
 
 namespace PrismCore
@@ -16,7 +17,7 @@ namespace PrismCore
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-
+            containerRegistry.RegisterDialog<Accordion, AccordionViewModel>();
         }
     }
 }
