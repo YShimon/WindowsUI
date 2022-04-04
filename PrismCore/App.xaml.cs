@@ -17,7 +17,8 @@ namespace PrismCore
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterDialog<Accordion, AccordionViewModel>();
+            containerRegistry.RegisterDialog<Expander, ExpanderViewModel>();
+            containerRegistry.RegisterDialog<ControlTemplate, ControlTemplateViewModel>();
         }
     }
 }

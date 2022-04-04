@@ -7,7 +7,8 @@
     <Grid>
         <!--<ContentControl prism:RegionManager.RegionName="ContentRegion" />-->
         <StackPanel>
-            <Button Content="アコーディオン" Command="{Binding ShowAcordionView}"/>
+            <Button Content="コントロールテンプレート" Command="{Binding ShowControlTemplateView}"/>
+            <Button Content="アコーディオン" Command="{Binding ShowExpanderView}"/>
         </StackPanel>
     </Grid>
 </Window>

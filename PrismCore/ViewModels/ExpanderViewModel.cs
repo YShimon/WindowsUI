@@ -7,14 +7,14 @@ using Prism.Services.Dialogs;
 
 namespace PrismCore.ViewModels
 {
-    public class AccordionViewModel : BindableBase, IDialogAware
+    public class ExpanderViewModel : BindableBase, IDialogAware
     {
-        public AccordionViewModel()
+        public ExpanderViewModel()
         {
 
         }
 
-        public string Title => throw new NotImplementedException();
+        public string Title => "Expander View";
 
         public event Action<IDialogResult> RequestClose;
 
