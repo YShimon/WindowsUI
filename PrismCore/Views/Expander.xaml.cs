@@ -5,9 +5,9 @@ namespace PrismCore.Views
     /// <summary>
     /// Interaction logic for Accordion
     /// </summary>
-    public partial class Accordion : UserControl
+    public partial class Expander : UserControl
     {
-        public Accordion()
+        public Expander()
         {
             InitializeComponent();
         }
