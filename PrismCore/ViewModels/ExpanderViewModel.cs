@@ -7,26 +7,36 @@ using Prism.Services.Dialogs;
 
 namespace PrismCore.ViewModels
 {
+    /// <summary>
+    /// Expanderサンプル画面のViewModel
+    /// </summary>
     public class ExpanderViewModel : BindableBase, IDialogAware
     {
-        public ExpanderViewModel()
-        {
+        /// <summary>
+        /// Expander Sample View Title
+        /// </summary>
+        public string Title => "Expander Sample View";
 
-        }
-
-        public string Title => "Expander View";
-
+        /// <inheritdoc/>
         public event Action<IDialogResult> RequestClose;
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        public ExpanderViewModel() { }
+
+        /// <inheritdoc/>
         public bool CanCloseDialog()
         {
             return true;
         }
 
+        /// <inheritdoc/>
         public void OnDialogClosed()
         {
         }
 
+        /// <inheritdoc/>
         public void OnDialogOpened(IDialogParameters parameters)
         {
         }

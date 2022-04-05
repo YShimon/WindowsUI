@@ -9,6 +9,9 @@ using Reactive.Bindings;
 
 namespace PrismCore.ViewModels
 {
+    /// <summary>
+    /// ControlTemplateサンプル画面のViewModel
+    /// </summary>
     public class ControlTemplateViewModel : BindableBase, IDialogAware
     {
         /// <summary>
@@ -30,28 +33,43 @@ namespace PrismCore.ViewModels
             Sample2.Subscribe(ExecutionSample2);
         }
 
-        public string Title => throw new NotImplementedException();
+        /// <summary>
+        /// Expander Sample View Title
+        /// </summary>
+        public string Title => "ControlTemplate Sample View";
 
+        /// <inheritdoc/>
         public event Action<IDialogResult> RequestClose;
 
+        /// <inheritdoc/>
         public bool CanCloseDialog()
         {
             return true;
         }
 
+        /// <inheritdoc/>
         public void OnDialogClosed()
         {
         }
 
+        /// <inheritdoc/>
         public void OnDialogOpened(IDialogParameters parameters)
         {
         }
 
+        /// <summary>
+        /// Sample1の処理
+        /// </summary>
+        /// <param name="obj">コマンドパラメータ</param>
         private void ExecutionSample1(object obj)
         {
             MessageBox.Show("ExecutionSample1");
         }
 
+        /// <summary>
+        /// Sample2の処理
+        /// </summary>
+        /// <param name="obj">コマンドパラメータ</param>
         private void ExecutionSample2(object obj)
         {
             MessageBox.Show("ExecutionSample2");
