@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="PrismCore.Views.DraggableControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"             
+             MinWidth="200"
+             MinHeight="200"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+
+    <Grid
+        Background="Gray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="220"/>
+            <RowDefinition Height="220"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="220"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- コントロールのドラッグ例 1 -->
+        <!-- Row=0, Column=0に表示 -->
+        <!-- Canvasの範囲を取得しているのでThumbは外にはみ出さない) -->
+        <Canvas
+            Grid.Row="0"
+            Grid.Column="0"
+            Width="200"
+            Height="200"
+            Margin="10"
+            Background="AliceBlue">
+            <!-- マウス操作で動作する対象(Thumb) -->
+            <!-- TODO:コードビハインドで動作登録(Behaviourを利用？) -->
+            <Thumb 
+                Width="50"
+                Height="50"
+                Canvas.Left="0"
+                Canvas.Top="0"
+                DragStarted="Thumb_DragStarted"
+                DragCompleted="Thumb_DragCompleted"
+                DragDelta="Thumb_DragDelta">
+                <Thumb.Template>
+                    <ControlTemplate>
+                        <Border x:Name="Thumb_Border" BorderBrush="Red" BorderThickness="5">
+                            <!--コントロールの追加が可能 -->
+                        </Border>
+                    </ControlTemplate>
+                </Thumb.Template>
+            </Thumb>
+        </Canvas>
+
+        <!-- コントロールのドラッグ例 2 -->
+        <!-- マウス操作で動作する対象(Rectangle) -->
+        <!-- TODO:コードビハインドで動作登録(Behaviourを利用？) -->
+        <!-- TODO:ドラッグの範囲をGrid.Row=1,Grid.Column=0の範囲にする -->
+        <Grid
+            x:Name="OperationArea" 
+            MouseLeave="OperationArea_MouseLeave"
+            Grid.Row="1"
+            Grid.Column="0" >
+            <Rectangle 
+                x:Name="Target"
+                Width="50"
+                Height="50"
+                MouseLeftButtonDown="Target_MouseLeftButtonDown"
+                MouseLeftButtonUp="Target_MouseLeftButtonUp"
+                MouseMove="Target_MouseMove"
+                Fill="Orange">
+            </Rectangle>
+        </Grid>
+
+        <!-- 親コントロールにMouseLeaveイベントを追加しても -->
+        <!-- Rectangleを抜け出さないとイベントは発火しない -->
+        <!-- 範囲内でのみ動作するようにするには、座標を参照する必要がある -->
+        <!-- Row=1,Column=1のグリッド領域にマウスが移動するとMouseLeaveイベントが発火する -->
+        <!-- Z-indexの問題？ -->
+        <StackPanel
+            x:Name="StackArea" 
+            MouseLeave="StackArea_MouseLeave"
+            Background="Beige"
+            Grid.Row="0"
+            Grid.Column="1">
+            <Rectangle 
+                x:Name="Target2"
+                Width="50"
+                Height="50"
+                MouseLeftButtonDown="Target2_MouseLeftButtonDown"
+                MouseLeftButtonUp="Target2_MouseLeftButtonUp"
+                MouseMove="Target2_MouseMove"
+                Fill="GreenYellow">
+            </Rectangle>
+        </StackPanel>
+
+        <Grid
+            Grid.Row="1"
+            Grid.Column="1"
+            Background="Aqua" />
+    </Grid>
+</UserControl>

@@ -9,6 +9,7 @@
         <StackPanel>
             <Button Content="コントロールテンプレート" Command="{Binding ShowControlTemplateView}"/>
             <Button Content="アコーディオン" Command="{Binding ShowExpanderView}"/>
+            <Button Content="ドラッグ機能" Command="{Binding ShowDraggableControlView}"/>
         </StackPanel>
     </Grid>
 </Window>

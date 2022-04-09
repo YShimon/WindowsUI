@@ -24,6 +24,7 @@ namespace PrismCore
         {
             containerRegistry.RegisterDialog<Expander, ExpanderViewModel>();
             containerRegistry.RegisterDialog<ControlTemplate, ControlTemplateViewModel>();
+            containerRegistry.RegisterDialog<DraggableControl, DraggableControlViewModel>();
         }
     }
 }

@@ -33,7 +33,15 @@ namespace PrismCore.ViewModels
         /// </summary>
         public ReactiveCommand ShowExpanderView { get; } = new ReactiveCommand();
 
+        /// <summary>
+        /// ControlTemplateサンプル画面表示コマンド
+        /// </summary>
         public ReactiveCommand ShowControlTemplateView { get; } = new ReactiveCommand();
+
+        /// <summary>
+        /// ドラッグ可能コントロールのサンプル画面表示コマンド
+        /// </summary>
+        public ReactiveCommand ShowDraggableControlView { get; } = new ReactiveCommand();
 
         /// <summary>
         /// コンストラクタ
@@ -47,6 +55,7 @@ namespace PrismCore.ViewModels
 
             ShowExpanderView.Subscribe(ExecuteShowExpanderView);
             ShowControlTemplateView.Subscribe(ExecuteShowControlTemplateView);
+            ShowDraggableControlView.Subscribe(ExecuteShowDraggableControlView);
         }
 
         /// <summary>
@@ -63,6 +72,14 @@ namespace PrismCore.ViewModels
         private void ExecuteShowControlTemplateView()
         {
             dialogService.ShowDialog(nameof(ControlTemplate), null, null);
+        }
+
+        /// <summary>
+        /// ドラッグ可能コントロールのサンプル画面表示処理
+        /// </summary>
+        private void ExecuteShowDraggableControlView()
+        {
+            dialogService.ShowDialog(nameof(DraggableControl), null, null);
         }
     }
 }
